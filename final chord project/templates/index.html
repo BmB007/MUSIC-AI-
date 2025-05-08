@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chord Extraction</title>
+    <style>
+        body { font-family: Arial; margin: 30px; background: #f7f7f7; }
+        h1 { color: #444; }
+        #output { margin-top: 20px; }
+        .chord { margin: 10px 0; padding: 10px; background: #fff; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Upload Audio File</h1>
+    <form id="uploadForm">
+        <input type="file" name="audio" accept="audio/*" required>
+        <button type="submit">Extract Chords</button>
+    </form>
+
+    <div id="output"></div>
+    <div id="chartImg"></div>
+
+    <script>
+        document.getElementById('uploadForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            document.getElementById('output').innerHTML = 'Processing...';
+
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            const outputDiv = document.getElementById('output');
+
+            if (result.error) {
+                outputDiv.innerHTML = 'Error: ' + result.error;
+                return;
+            }
+
+            outputDiv.innerHTML = '';
+            result.chord_chart.forEach(entry => {
+                outputDiv.innerHTML += `
+                    <div class="chord">
+                        <b>${entry.start_time} - ${entry.end_time}</b>: ${entry.chord}<br>
+                        Guitar: ${entry.guitar_chord}<br>
+                        Piano: ${entry.piano_chord}
+                    </div>
+                `;
+            });
+
+            document.getElementById('chartImg').innerHTML = `<h2>Chord Progression</h2><img src="${result.visualization}" width="800">`;
+        };
+    </script>
+</body>
+</html>
