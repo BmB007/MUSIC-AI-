@@ -7,23 +7,6 @@ A web app to extract chords from audio files using your **custom trained neural 
 
 ---
 
-## 📁 Project Structure
-
-```
-
-project/
-├── app.py                          # Flask backend
-├── chord\_extraction\_system.py     # Core logic (includes your trained model loader)
-├── your\_model.h5                  # ✅ Your custom trained model (place it here)
-├── uploads/                       # Uploaded audio files
-├── results/                       # Generated visual outputs
-└── templates/
-└── index.html                 # Web interface
-
-````
-
----
-
 ## ⚙️ Requirements
 
 - Python 3.7+
@@ -111,9 +94,9 @@ python app.py
 
 ## 🧑‍💻 Author
 
-**Bharath Bala**
+**Bharath Balasubramanian**
 Founder, Web Crafters Foundation
-📧 [bharathbala1503@gmail.com](mailto:bharathbala1503@gmail.com)
+📧 [bharathbala1503@gmail.com]
 🌐 wcff.in
 
 ---
@@ -128,5 +111,5 @@ This project is for academic and research purposes.  ALL RIGHTS RESERVED TO wcff
 
 Let me know:
 - What is the exact filename of your model? (`chord_recognition_model.h5`?)
-- Do you want the `requirements.txt` generated for this setup?
+- Do you want the `requirements.txt` and 'File structure generated' for this setup?
 ```
