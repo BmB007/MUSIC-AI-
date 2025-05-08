@@ -1,5 +1,3 @@
-Great! Since you’ve trained and saved your own `.h5` model for chord prediction, I’ll update the `README.md` to reflect that and show how to use it within the project.
-
 ---
 
 ### ✅ Updated `README.md`
